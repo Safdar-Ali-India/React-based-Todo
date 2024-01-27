@@ -11,10 +11,31 @@ const addItem = () =>{
     alert("Please fill your data")
   }
   else{
-    setItem([...item, input])
+    const myNewInput ={
+      id: new Date().getTime().toString(),
+      name:input,
+    }
+    setItem([...item, myNewInput])
     setInput("")
   }
 }
+
+
+// deleting item
+const removeItem =(index)=>{
+const updatedItem = item.filter((curElem)=>{
+  return index !== curElem.id;
+})
+setItem(updatedItem)
+}
+
+
+// removing all items
+const removeAll = ()=>{
+  setItem([])
+}
+
+console.log({removeAll}, "removeAll");
   return (
    <>
    <div className="main-div">
@@ -36,7 +57,7 @@ onChange={(e) => setInput(e.target.value)}/>
 
   <div className="showItems">
 
-<button className="btn effect04" data-sm-link-text="Remove All">
+<button className="btn effect04" data-sm-link-text="Remove All" onClick={removeAll}>
   
   
   <span>CHECK LIST</span></button>
@@ -47,12 +68,15 @@ onChange={(e) => setInput(e.target.value)}/>
 
 
 <div className="showItems">
-  {item.map((curElem, index)=>{
-    return(<div className="eachItem" key={index}>
-    <h3>{curElem}</h3>
+  {item.map((curElem)=>{
+    return(
+    <div className="eachItem" key={curElem.id}>
+    <h3>{curElem.name}</h3>
     <div className="todo-btn">
     <i class="far fa-solid fa-edit"></i> 
-    <i class="far fa-solid fa-trash-alt"></i> 
+    <i class="far fa-solid fa-trash-alt" onClick={()=>{
+      removeItem(curElem.id)
+    }}></i> 
     
     </div>
     </div>);
@@ -66,7 +90,7 @@ onChange={(e) => setInput(e.target.value)}/>
 
 </div>
 
-
+{/* I have done a change in the project */}
 {/* remove our items */}
 
 
