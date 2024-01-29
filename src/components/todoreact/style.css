@@ -1,10 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap"); */
 
+@import url('https://fonts.cdnfonts.com/css/helvetica-neue-55');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: Circular, custom-font, "Helvetica Neue";
 }
 
 html {
@@ -116,7 +117,7 @@ input:focus {
   margin-left: 1rem;
   min-width: 40rem;
   word-break: break-word;
-  background: rgb(85, 41, 220);
+  background: #37996b;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -124,7 +125,7 @@ input:focus {
 
 .eachItem:hover {
   background: rgb(249, 249, 252);
-  color: rgb(85, 41, 220);
+  color: #37996b;
 }
 
 .showItems .eachItem h3 {
@@ -165,7 +166,7 @@ input:focus {
 }
 
 .eachItem:hover h3 {
-  color: rgb(85, 41, 220);
+  color: #37996b;
 }
 
 .btn {
@@ -202,7 +203,7 @@ input:focus {
 }
 
 .effect04:hover {
-  background-color: rgb(85, 41, 220);
+  background-color: #37996b;
 }
 
 .effect04:hover span {
