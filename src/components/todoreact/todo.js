@@ -19,10 +19,29 @@ const Todo = () => {
 
   const [input, setInput] = useState("");
   const [item, setItem] = useState(getLocalData());
+const [isEditItem, setIsEditItem]= useState("")
+const [toggleButton, setToggleButton] = useState(false)
+
 // adding the items function
 const addItem = () =>{
   if (input === "") {
     alert("Please fill your data")
+  }else if(input && toggleButton){
+    setItem(
+      item.map((curElem)=>{
+if(curElem.id===isEditItem){
+return {...curElem , name: input};
+}
+
+return curElem;
+      })
+
+    )
+
+
+    setInput([]);
+setIsEditItem(null);
+setToggleButton(false)
   }
   else{
     const myNewInput ={
@@ -33,7 +52,17 @@ const addItem = () =>{
     setInput("")
   }
 }
+// edit the items
 
+const editItem = (index)=>{
+const item_todo_edited = item.find((curElem) =>{
+  return curElem.id === index;
+});
+setInput(item_todo_edited.name);
+setIsEditItem(index);
+setToggleButton(true)
+
+}
 
 // deleting item
 const removeItem =(index)=>{
@@ -75,8 +104,15 @@ useEffect(() => {
 className='form-control' 
 value={input}
 onChange={(e) => setInput(e.target.value)}/>
+{
+toggleButton?(
+
+<i class="far fa-solid fa-edit" onClick={addItem}></i> 
+):(
 
 <i class="fa fa-solid fa-plus" onClick={addItem}></i> 
+
+)}
   </div>
 
   <div className="showItems">
@@ -97,13 +133,18 @@ onChange={(e) => setInput(e.target.value)}/>
     <div className="eachItem" key={curElem.id}>
     <h3>{curElem.name}</h3>
     <div className="todo-btn">
-    <i class="far fa-solid fa-edit"></i> 
+    <i class="far fa-solid fa-edit" onClick={()=>{
+      editItem(curElem.id)
+    }}></i> 
     <i class="far fa-solid fa-trash-alt" onClick={()=>{
       removeItem(curElem.id)
     }}></i> 
     
     </div>
     </div>);
+
+
+
   })
 
   }
