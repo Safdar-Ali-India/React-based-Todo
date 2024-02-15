@@ -18,7 +18,7 @@ A simple and intuitive Todo application built with React.
 
 To run the application locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/react-todo-app.git`
+1. Clone the repository: `git clone https://github.com/Safdar-Ali-India/React-based-Todo.git`
 2. Navigate to the project directory: `cd react-todo-app`
 3. Install dependencies: `npm install`
 4. Start the development server: `npm start`
